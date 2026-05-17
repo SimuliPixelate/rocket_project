@@ -33,7 +33,7 @@ const SignUpPage = () => {
 			overflow-hidden"
     >
       <div className="p-8">
-        <p className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
+        <p className="text-3xl font-bold pb-5 text-center bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
           Create Account
         </p>
 

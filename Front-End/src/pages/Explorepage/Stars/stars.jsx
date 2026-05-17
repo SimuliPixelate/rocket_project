@@ -3,37 +3,64 @@ import { Link } from "react-router";
 import axios from "axios";
 import Particles from "../../../components/Particles";
 import ExploreNav from "../../../components/ExploreNav";
-function Planets() {
-  const [planets, setPlanets] = useState([]);
-  const [search, setSearch] = useState("Earth");
+function Stars() {
+  const [stars, setStars] = useState([]);
+  const [search, setSearch] = useState("Sun");
   const [page, setPage] = useState(1);
   const size = 15;
 
-  const totalPages = Math.ceil(planets.length / size);
-  const currentItems = planets.slice((page - 1) * size, page * size);
+  const totalPages = Math.ceil(stars.length / size);
+  const currentItems = stars.slice((page - 1) * size, page * size);
 
-  const fetchPlanets = async (query = "") => {
+  const fetchStars = async (query = "") => {
     try {
       const res = await axios.get(
-        `https://api.api-ninjas.com/v1/planets?name=${query}`,
+        `https://api.api-ninjas.com/v1/stars?name=${query}`,
         {
           headers: { "X-Api-Key": import.meta.env.VITE_API_NINJA },
         }
       );
       if (Array.isArray(res.data)) {
-        setPlanets(res.data);
+        setStars(res.data);
       } else {
-        setPlanets([]);
+        setStars([]);
       }
       setPage(1);
     } catch (err) {
-      console.error("Error fetching planets:", err);
+      console.error("Error fetching stars:", err);
     }
   };
 
   useEffect(() => {
-    fetchPlanets(search);
+    fetchStars(search);
   }, []);
+
+  const sections = [
+    {
+      id: 1,
+      icon: "📅",
+      title: "Picture of the Day",
+      path: "/apod",
+    },
+    {
+      id: 2,
+      icon: "🖼️",
+      title: "Images & Videos",
+      path: "/imagevideo",
+    },
+    {
+      id: 3,
+      icon: "🔵",
+      title: "Planets",
+      path: "/planets",
+    },
+    {
+      id: 4,
+      icon: "✨",
+      title: "Stars",
+      path: "/stars",
+    },
+  ];
 
   return (
     <div className="bg-black min-h-screen text-white" data-theme="">
@@ -53,10 +80,10 @@ function Planets() {
         />
         <div className="hero-content text-center">
           <div className="max-w-xl">
-            <p className="text-4xl font-bold mb-4">Planets</p>
+            <p className="text-4xl font-bold mb-4">Stars</p>
             <p className="mb-8 text-xl opacity-80">
-              Browse simple statistical data about different planets and
-              exoplanets in the known universe.
+              Browse simple statistical data about different stars and stellar
+              bodies in the known universe.
             </p>
           </div>
         </div>
@@ -67,13 +94,13 @@ function Planets() {
           <input
             type="text"
             className="bg-transparent flex-1 px-4 outline-none"
-            placeholder="Search a planet..."
+            placeholder="Search a star..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && fetchPlanets(search)}
+            onKeyDown={(e) => e.key === "Enter" && fetchStars(search)}
           />
           <button
-            onClick={() => fetchPlanets(search)}
+            onClick={() => fetchStars(search)}
             className="text-white px-4 py-2 rounded-lg font-bold btn btn-info"
           >
             Search
@@ -84,29 +111,33 @@ function Planets() {
       {/* Results Grid */}
       <section>
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {currentItems.map((planet, index) => (
+          {currentItems.map((star, index) => (
             <div
               key={index}
               className="bg-zinc-900 border border-zinc-800 p-5 rounded-xl"
             >
               <div className="flex justify-between items-center mb-4">
-                <p className="text-xl font-bold text-sky-400">{planet.name}</p>
+                <p className="text-xl font-bold text-sky-400">{star.name}</p>
                 <span className="text-[10px] bg-zinc-800 px-2 py-1 rounded text-zinc-400">
-                  {planet.distance_light_year === 0
-                    ? "SOLAR SYSTEM"
-                    : "EXOPLANET"}
+                  {star.constellation || "Unknown Constellation"}
                 </span>
               </div>
 
               <div className="space-y-2 text-sm text-zinc-300">
                 <div className="flex justify-between border-b border-zinc-800 pb-1">
-                  <span>Mass</span> <span>{planet.mass} Mⱼ</span>
+                  <span>Apparent Magnitude</span>{" "}
+                  <span>{star.apparent_magnitude} m</span>
                 </div>
                 <div className="flex justify-between border-b border-zinc-800 pb-1">
-                  <span>Radius</span> <span>{planet.radius} Rⱼ</span>
+                  <span>Absolute Magnitude</span>{" "}
+                  <span>{star.absolute_magnitude} a</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>Temp</span> <span>{planet.temperature} K</span>
+                <div className="flex justify-between border-b border-zinc-800 pb-1">
+                  <span>Distance</span>{" "}
+                  <span>{star.distance_light_year} ly</span>
+                </div>
+                <div className="flex justify-between border-b border-zinc-800 pb-1">
+                  <span>Spectral Class</span> <span>{star.spectral_class}</span>
                 </div>
               </div>
             </div>
@@ -134,4 +165,4 @@ function Planets() {
   );
 }
 
-export default Planets;
+export default Stars;

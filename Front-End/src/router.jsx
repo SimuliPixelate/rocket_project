@@ -21,7 +21,10 @@ import Apod from "./pages/Explorepage/APOD/apod";
 import Library from "./pages/Explorepage/ImageVideo/imagevideo";
 import LibraryDetail from "./pages/Explorepage/ImageVideo/imagevideodetail";
 import Planets from "./pages/Explorepage/Planets/planets";
+import Stars from "./pages/Explorepage/Stars/stars";
 import Personal from "./pages/Learnings/personal";
+import PersonalCreate from "./pages/Learnings/personal_create";
+import PersonalEdit from "./pages/Learnings/personal_edit";
 import Profile from "./pages/Profilepage/profile";
 
 // --- AUTH GUARDS ---
@@ -72,7 +75,7 @@ const AuthLayout = () => (
 const MainLayout = () => (
   <div className="flex flex-col min-h-screen">
     <Navbar />
-    <main className="grow">
+    <main className="grow min-h-250 bg-black">
       <Outlet />
     </main>
     <Footer />
@@ -118,7 +121,10 @@ export const router = createBrowserRouter([
               { path: "imagevideo", element: <Library /> },
               { path: "imagevideodetail/:id", element: <LibraryDetail /> },
               { path: "planets", element: <Planets /> },
+              { path: "stars", element: <Stars /> },
               { path: "personal", element: <Personal /> },
+              { path: "personal/create", element: <PersonalCreate /> },
+              { path: "personal/edit/:id", element: <PersonalEdit /> },
               { path: "profile", element: <Profile /> },
             ],
           },

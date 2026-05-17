@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import axios from "axios";
+import Particles from "../../../components/Particles";
+import ExploreNav from "../../../components/ExploreNav";
 function Library() {
   const [items, setItems] = useState([]);
   const [query, setQuery] = useState("earth");
@@ -32,64 +34,34 @@ function Library() {
     searchNASA(query, newType);
   };
 
-  const sections = [
-    {
-      id: 1,
-      icon: "📅",
-      title: "Picture of the Day",
-      path: "/apod",
-    },
-    {
-      id: 2,
-      icon: "🖼️",
-      title: "Images & Videos",
-      path: "/imagevideo",
-    },
-    {
-      id: 3,
-      icon: "🔵",
-      title: "Planets",
-      path: "/planets",
-    },
-  ];
-
   return (
     <div className="bg-black min-h-screen text-white" data-theme="">
-      <header className="hero bg-base-300 py-20">
+      <div
+        style={{ width: "100%", height: "600px", position: "relative" }}
+        className="hero py-20 border-b border-zinc-900"
+      >
+        <Particles
+          particleColors={["#ffffff"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />
         <div className="hero-content text-center">
           <div className="max-w-xl">
-            <h1 className="text-4xl font-bold mb-4">Images & Videos </h1>
+            <p className="text-4xl font-bold mb-4">Images & Videos </p>
             <p className="mb-8 text-xl opacity-80">
               Access data that are discovered and captured of our universe and
               beyond.
             </p>
           </div>
         </div>
-      </header>
+      </div>
 
-      <section className="py-20 px-6 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {sections.map((item) => (
-            <Link
-              key={item.id}
-              to={item.path}
-              className="group block p-8 bg-gray-900/40 rounded-2xl border border-gray-800 hover:border-sky-500/50 transition-all duration-300"
-            >
-              <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-white">
-                {item.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {item.desc}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="p-5">
+      <section className="p-10">
         {/* Search Bar - Matching your wireframe */}
         <div className="max-w-xl mx-auto mb-10 flex gap-2 bg-zinc-900 p-2 rounded-lg">
           <input
@@ -169,6 +141,7 @@ function Library() {
           ))}
         </div>
       )}
+      <ExploreNav />
     </div>
   );
 }

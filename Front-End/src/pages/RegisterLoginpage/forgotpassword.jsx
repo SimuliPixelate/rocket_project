@@ -31,7 +31,7 @@ const ForgotPasswordPage = () => {
 
         {!isSubmitted ? (
           <form onSubmit={handleSubmit}>
-            <p className="text-gray-300 mb-6 text-center">
+            <p className="text-gray-300 mb-6 text-center pb-5">
               Enter your email address and we'll send you a link to reset your
               password.
             </p>

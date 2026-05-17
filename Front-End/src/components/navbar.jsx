@@ -44,6 +44,9 @@ function Navbar() {
                 <li>
                   <Link to="/planets">Planets</Link>
                 </li>
+                <li>
+                  <Link to="/stars">Stars</Link>
+                </li>
               </ul>
             </li>
 

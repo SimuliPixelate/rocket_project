@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import axios from "axios";
-
+import Particles from "../../components/Particles";
+import stellar from "../../images/stellar.jpg";
+import saturn from "../../images/saturn.jpg";
+import launch from "../../images/launch.jpg";
+import astronaut from "../../images/astronaut.jpg";
+import earth from "../../images/earth.jpg";
 function Home() {
   const [apod, setApod] = useState(null);
 
@@ -46,6 +51,13 @@ function Home() {
     },
     {
       id: 4,
+      icon: "✨",
+      title: "Stars",
+      path: "/stars",
+      desc: "Find quick statistics about stars and stellar bodies discovered within our universe",
+    },
+    {
+      id: 5,
       icon: "📖",
       title: "Learnings",
       path: "/personal",
@@ -56,10 +68,24 @@ function Home() {
   return (
     <div className="bg-black min-h-screen text-white" data-theme="">
       {/* Hero Section - Using DaisyUI Hero */}
-      <header className="hero bg-base-300 py-20">
+
+      <div
+        style={{ width: "100%", height: "600px", position: "relative" }}
+        className="hero py-20 border-b border-zinc-900"
+      >
+        <Particles
+          particleColors={["#ffffff"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-4xl font-bold mb-4">Explore the Cosmos</h1>
+            <p className="text-4xl font-bold mb-4">Explore the Cosmos</p>
             <p className="mb-8 text-sm opacity-80">
               Search and Discover collected universe data. Witness breathtaking
               imagery, information, and write notes to document your learnings
@@ -67,7 +93,7 @@ function Home() {
             </p>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* APOD Section */}
       <section className="py-16 px-4 text-center">
@@ -96,41 +122,65 @@ function Home() {
           )}
         </div>
 
-        <div>
-          <p className="italic text-lg">{apod?.title}</p>
-          {/*<p className="italic text-lg">{apod?.explanation}</p>*/}
+        <div className="mt-6">
+          <span className="text-xs font-semibold tracking-widest text-sky-400 uppercase block mb-1">
+            Featured Title
+          </span>
+          <p className="text-lg md:text-xl font-medium text-slate-200 px-4">
+            {apod?.title}
+          </p>
         </div>
       </section>
 
       {/* Carousel Section */}
       <section className="py-16 px-4 text-center">
         <h1 className="text-white!">Learn All about Space</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 pb-10">
           Our universe is vast, seize the moment to learn something new about it
           each day!
         </p>
 
-        <div className="mt-10 carousel carousel-center max-w-5xl p-4 space-x-6 mx-auto bg-transparent">
-          {[1, 2, 3].map((item) => (
+        <div className="carousel w-full max-w-4xl mx-auto h-[350px] md:h-[500px] rounded-2xl border border-gray-800 shadow-2xl">
+          {[
+            { id: "slide1", img: earth, prev: "#slide5", next: "#slide2" },
+            { id: "slide2", img: stellar, prev: "#slide1", next: "#slide3" },
+            { id: "slide3", img: saturn, prev: "#slide2", next: "#slide4" },
+            { id: "slide4", img: launch, prev: "#slide3", next: "#slide5" },
+            { id: "slide5", img: astronaut, prev: "#slide4", next: "#slide1" },
+          ].map((slide) => (
             <div
-              key={item}
-              className="carousel-item w-72 h-96 bg-base-300 rounded-2xl shadow-lg"
-            ></div>
+              id={slide.id}
+              key={slide.id}
+              className="carousel-item relative w-full h-full"
+            >
+              <img
+                src={slide.img}
+                className="w-full h-full object-cover"
+                alt="Space Slide"
+              />
+              <div className="absolute inset-y-0 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <a
+                  href={slide.prev}
+                  className="btn btn-circle btn-sm md:btn-md bg-black/50 hover:bg-black/80 border-none text-white pointer-events-auto"
+                >
+                  ❮
+                </a>
+                <a
+                  href={slide.next}
+                  className="btn btn-circle btn-sm md:btn-md bg-black/50 hover:bg-black/80 border-none text-white pointer-events-auto"
+                >
+                  ❯
+                </a>
+              </div>
+            </div>
           ))}
-        </div>
-
-        {/* Custom Progress/Indicators */}
-        <div className="flex justify-center gap-2 mt-10">
-          <span className="h-1 w-12 bg-sky-400 rounded-full"></span>
-          <span className="h-1 w-12 bg-gray-700 rounded-full"></span>
-          <span className="h-1 w-12 bg-gray-700 rounded-full"></span>
         </div>
       </section>
 
       {/* Discovery Grid */}
       <section className="py-20 px-6 max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-3xl font-semibold mb-2 text-white!">
+          <h1 className="text-3xl font-semibold text-white!">
             Start Discovering
           </h1>
           <p className="text-sm text-gray-500">
@@ -149,7 +199,7 @@ function Home() {
               <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-white">
+              <h3 className="text-xl  font-bold mb-3 group-hover:text-sky-400 text-white">
                 {item.title}
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">

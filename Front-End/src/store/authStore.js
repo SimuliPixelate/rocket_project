@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = "/api/userauth";
+const API_URL = "http://localhost:5000/api/userauth";
 
 // ✅ Dedicated instance — withCredentials only applies to your backend
 const api = axios.create({

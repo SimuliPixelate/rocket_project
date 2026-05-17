@@ -32,7 +32,7 @@ app.use("/api/userauth", userauthRoutes);
 // });
 
 //Personal Route connect to use and test on postman
-app.use("/api/learning", personalRoutes);
+app.use("/api/personal", personalRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

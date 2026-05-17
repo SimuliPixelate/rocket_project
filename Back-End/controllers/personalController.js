@@ -1,123 +1,66 @@
-import Learning from "../models/personal.js";
-// ----------------------------------------
-// @desc    Get all learnings of logged-in user
-// @route   GET /api/learnings
-// @access  Protected
-// ----------------------------------------
-//Get user data
+import Personal from "../models/personal.js";
+
 export const getuserLearning = async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
-    const skip = (page - 1) * limit;
-
-    const total = await Learning.countDocuments({ userId: req.user._id });
-    const learnings = await Learning.find({ userId: req.user._id })
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit);
-
-    res.status(200).json({
-      learnings,
-      currentPage: page,
-      totalPages: Math.ceil(total / limit),
-      total,
+    const { id } = req.params;
+    const learnings = await Personal.find({ userId: id }).sort({
+      createdAt: -1,
     });
+    res.status(200).json(learnings);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ errorMessage: error.message });
   }
 };
 
-// ----------------------------------------
-// @desc    Create a new learning
-// @route   POST /api/learnings
-// @access  Protected
-// ----------------------------------------
-//Create personal learning
+export const getuserLearningAll = async (req, res) => {
+  try {
+    const learnings = await Personal.find().sort({ createdAt: -1 });
+    res.status(200).json(learnings);
+  } catch (error) {
+    res.status(500).json({ errorMessage: error.message });
+  }
+};
+
 export const createuserLearning = async (req, res) => {
   try {
-    const { title, description } = req.body;
-
-    if (!title || !description) {
+    const { userId, title, description, image } = req.body;
+    if (!userId || !title || !description) {
       return res
         .status(400)
-        .json({ message: "Title and description are required" });
+        .json({ message: "userId, title, and description are required" });
     }
-
-    const learning = await Learning.create({
-      userId: req.user._id,
-      title,
-      description,
-    });
-
-    res
-      .status(201)
-      .json({ message: "Learning created successfully", learning });
+    const newLearning = new Personal({ userId, title, description, image });
+    const saved = await newLearning.save();
+    res.status(201).json(saved);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ errorMessage: error.message });
   }
 };
 
-// ----------------------------------------
-// @desc    Update a learning
-// @route   PUT /api/learnings/:id
-// @access  Protected
-// ----------------------------------------
-//Update specific personal learning based on Id
 export const updateuserLearning = async (req, res) => {
   try {
-    const { title, description } = req.body;
-
-    const learning = await Learning.findById(req.params.id);
-
-    if (!learning) {
+    const { id } = req.params;
+    const learning = await Personal.findById(id);
+    if (!learning)
       return res.status(404).json({ message: "Learning not found" });
-    }
-
-    // Make sure the learning belongs to the logged-in user
-    if (learning.userId.toString() !== req.user._id.toString()) {
-      return res
-        .status(403)
-        .json({ message: "Not authorized to update this learning" });
-    }
-
-    learning.title = title || learning.title;
-    learning.description = description || learning.description;
-    await learning.save();
-
-    res
-      .status(200)
-      .json({ message: "Learning updated successfully", learning });
+    const updated = await Personal.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    res.status(200).json(updated);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ errorMessage: error.message });
   }
 };
 
-// ----------------------------------------
-// @desc    Delete a learning
-// @route   DELETE /api/learnings/:id
-// @access  Protected
-// ----------------------------------------
-//Delete specific personal learning based on Id
 export const deleteuserLearning = async (req, res) => {
   try {
-    const learning = await Learning.findById(req.params.id);
-
-    if (!learning) {
+    const { id } = req.params;
+    const learning = await Personal.findById(id);
+    if (!learning)
       return res.status(404).json({ message: "Learning not found" });
-    }
-
-    // Make sure the learning belongs to the logged-in user
-    if (learning.userId.toString() !== req.user._id.toString()) {
-      return res
-        .status(403)
-        .json({ message: "Not authorized to delete this learning" });
-    }
-
-    await learning.deleteOne();
-
+    await Personal.findByIdAndDelete(id);
     res.status(200).json({ message: "Learning deleted successfully" });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ errorMessage: error.message });
   }
 };
