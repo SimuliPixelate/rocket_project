@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import ReactPlayer from "react-player";
 import axios from "axios";
 import Particles from "../../../components/Particles";
 import ExploreNav from "../../../components/ExploreNav";
@@ -43,7 +44,7 @@ function Apod() {
         <div className="hero-content text-center">
           <div className="max-w-xl">
             <p className="text-4xl font-bold mb-4">Picture of the Day</p>
-            <p className="mb-8 text-xl opacity-80">
+            <p className="mb-8 text-sm opacity-80">
               Each day a different image or photograph of our fascinating
               universe is featured, along with an explanation written and
               provided by proffesional astronomers.
@@ -96,10 +97,11 @@ function Apod() {
         <div className="max-w-4xl my-5 mx-auto aspect-video bg-neutral rounded-2xl  shadow-2xl overflow-auto">
           {apod ? (
             apod.media_type === "video" ? (
-              <video
+              <ReactPlayer
                 src={apod.url}
                 alt={apod.title}
-                className="w-full h-full"
+                width="100%"
+                height="100%"
                 controls
               />
             ) : (

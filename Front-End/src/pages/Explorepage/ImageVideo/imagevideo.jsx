@@ -53,7 +53,7 @@ function Library() {
         <div className="hero-content text-center">
           <div className="max-w-xl">
             <p className="text-4xl font-bold mb-4">Images & Videos </p>
-            <p className="mb-8 text-xl opacity-80">
+            <p className="mb-8 text-sm opacity-80">
               Access data that are discovered and captured of our universe and
               beyond.
             </p>

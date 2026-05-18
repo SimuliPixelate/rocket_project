@@ -40,7 +40,7 @@ function PersonalCreate() {
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-lg bg-[#0f111a] border border-gray-800 rounded-xl p-8">
-        <h2 className="text-2xl font-bold text-info mb-6">Add New Learning</h2>
+        <p className="text-2xl font-bold text-info mb-6">Add New Learning</p>
 
         {error && <p className="text-error text-sm mb-4">{error}</p>}
 

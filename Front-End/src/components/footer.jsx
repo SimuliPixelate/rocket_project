@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 function Footer() {
   return (
-    <footer className="flex flex-col p-10 items-center text-white bg-black">
+    <footer className="flex flex-col p-10 items-center border-t border-zinc-900 text-white bg-black">
       <div className="grid grid-flow-col mb-5">
         <Link
           to="/home"

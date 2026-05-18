@@ -54,7 +54,7 @@ function Planets() {
         <div className="hero-content text-center">
           <div className="max-w-xl">
             <p className="text-4xl font-bold mb-4">Planets</p>
-            <p className="mb-8 text-xl opacity-80">
+            <p className="mb-8 text-sm opacity-80">
               Browse simple statistical data about different planets and
               exoplanets in the known universe.
             </p>

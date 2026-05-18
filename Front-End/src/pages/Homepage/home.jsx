@@ -63,6 +63,13 @@ function Home() {
       path: "/personal",
       desc: "Document your experiences and learnings that you can go back and remember later on",
     },
+    {
+      id: 6,
+      icon: "😎",
+      title: "Profile",
+      path: "/profile",
+      desc: "Access and update your account information, profile picture, and security",
+    },
   ];
 
   return (

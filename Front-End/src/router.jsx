@@ -101,11 +101,11 @@ export const router = createBrowserRouter([
                 path: "userresetpassword/:token",
                 element: <ResetPasswordPage />,
               },
+              { path: "userverifyemail", element: <VerifyEmailPage /> },
             ],
           },
         ],
       },
-      { path: "userverifyemail", element: <VerifyEmailPage /> },
 
       // 2. PROTECTED APP ROUTES (Navbar, no Shapes)
       {

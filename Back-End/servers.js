@@ -7,14 +7,19 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { connectDB } from "./config/db.js";
 import userauthRoutes from "./routes/userauthRoutes.js";
 import personalRoutes from "./routes/personalRoutes.js";
 
-dotenv.config();
+dotenv.config({ path: "./.env" });
 connectDB();
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.use(
   cors({
@@ -25,6 +30,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 //User Route connect to use and test on Postman
 app.use("/api/userauth", userauthRoutes);
 // app.get("/", (req, res) => {

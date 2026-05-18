@@ -70,7 +70,7 @@ function Personal() {
         <div className="hero-content text-center">
           <div className="max-w-xl">
             <p className="text-4xl font-bold mb-4">Personal Learnings</p>
-            <p className="mb-8 text-xl opacity-80">
+            <p className="mb-8 text-sm opacity-80">
               Write what you have learned. Document your discoveries and
               findings.
             </p>
