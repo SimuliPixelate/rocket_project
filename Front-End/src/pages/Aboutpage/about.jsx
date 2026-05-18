@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import axios from "axios";
+import member_a from "../../images/member_a.jpg";
+import member_b from "../../images/member_b.jpg";
+import member_c from "../../images/member_c.jpg";
+import member_d from "../../images/member_d.jpg";
 
 function About() {
   return (
     <div className="bg-black min-h-screen text-white flex flex-col w-full">
       {/* Main Container */}
-      <main className="max-w-5xl mx-auto px-6 py-12 w-full text-left flex-grow">
+      <main className="max-w-5xl mx-auto px-6 py-12 w-full text-left grow">
         {/* Header Section */}
         <section className="mb-12">
           <h1 className="text-4xl font-bold mb-6 tracking-tight text-white!">
@@ -61,7 +65,7 @@ function About() {
         {/* Meet the Team Section */}
         <section className="pt-12 border-t border-gray-800">
           <div className="flex flex-col lg:flex-row lg:items-center gap-12 pb-10">
-            <p className="text-4xl font-bold mb-6 tracking-tight text-white! min-w-[220px]">
+            <p className="text-4xl font-bold mb-6 tracking-tight text-white! min-w-55">
               Meet the Team
             </p>
           </div>
@@ -69,12 +73,13 @@ function About() {
           <div className="grid grid-cols-2 gap-12">
             {/* Team Member 1 */}
             <div className="flex items-center gap-4 group">
-              <div
-                className="w-20 h-20 bg-gray-800 rounded-full flex-shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
+              <img
+                src={member_a}
+                className="w-20 h-20 bg-gray-800 rounded-full shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
                 aria-hidden="true"
-              ></div>
+              />
               <div>
-                <h3 className="font-bold text-lg text-white group-hover:text-sky-400 transition-colors">
+                <h3 className="font-bold text-lg text-white  transition-colors">
                   Andrew Bernal
                 </h3>
                 <p className="text-sm text-gray-500">Developer</p>
@@ -83,12 +88,13 @@ function About() {
 
             {/* Team Member 2 */}
             <div className="flex items-center gap-4 group">
-              <div
-                className="w-20 h-20 bg-gray-800 rounded-full flex-shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
+              <img
+                src={member_b}
+                className="w-20 h-20 bg-gray-800 rounded-full shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
                 aria-hidden="true"
-              ></div>
+              />
               <div>
-                <h3 className="font-bold text-lg text-white group-hover:text-sky-400 transition-colors">
+                <h3 className="font-bold text-lg text-white transition-colors">
                   Yuji Tashiro
                 </h3>
                 <p className="text-sm text-gray-500">Developer</p>
@@ -97,12 +103,13 @@ function About() {
 
             {/* Team Member 3 */}
             <div className="flex items-center gap-4 group">
-              <div
-                className="w-20 h-20 bg-gray-800 rounded-full flex-shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
+              <img
+                src={member_c}
+                className="w-20 h-20 bg-gray-800 rounded-full shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
                 aria-hidden="true"
-              ></div>
+              />
               <div>
-                <h3 className="font-bold text-lg text-white group-hover:text-sky-400 transition-colors">
+                <h3 className="font-bold text-lg text-white  transition-colors">
                   Vince Eugenio
                 </h3>
                 <p className="text-sm text-gray-500">Quality Analyst</p>
@@ -111,12 +118,13 @@ function About() {
 
             {/* Team Member 4 */}
             <div className="flex items-center gap-4 group">
-              <div
-                className="w-20 h-20 bg-gray-800 rounded-full flex-shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
+              <img
+                src={member_d}
+                className="w-20 h-20 bg-gray-800 rounded-full shrink-0 ring-2 ring-gray-700 group-hover:ring-sky-500/50 transition-all duration-300"
                 aria-hidden="true"
-              ></div>
+              />
               <div>
-                <h3 className="font-bold text-lg text-white group-hover:text-sky-400 transition-colors">
+                <h3 className="font-bold text-lg text-white transition-colors">
                   Angelo Juvida
                 </h3>
                 <p className="text-sm text-gray-500">Quality Analyst</p>

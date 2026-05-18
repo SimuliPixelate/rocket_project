@@ -175,7 +175,7 @@ const Profile = () => {
 
   return (
     <div className="bg-black min-h-screen text-white flex items-center w-full">
-      <main className="max-w-5xl mx-auto px-6 py-12 w-full text-left flex-grow">
+      <main className="max-w-5xl mx-auto px-6 py-12 w-full text-left grow">
         <h1 className="text-3xl font-bold mb-8 tracking-tight text-white!">
           Your Profile
         </h1>
@@ -186,12 +186,12 @@ const Profile = () => {
           transition={{ delay: 0.2 }}
           className="bg-gray-900/30 border border-gray-800 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-8 items-stretch"
         >
-          <div className="bg-gray-900/50 border border-gray-800/80 rounded-2xl p-6 flex flex-col items-center justify-between text-center md:w-80 min-h-[400px]">
+          <div className="bg-gray-900/50 border border-gray-800/80 rounded-2xl p-6 flex flex-col items-center justify-between text-center md:w-80 min-h-100">
             <div className="flex flex-col items-center w-full">
               {/* --- INTEGRATED ACTIVE AVATAR CONTAINER --- */}
               <div
                 onClick={handleAvatarClick}
-                className="relative w-36 h-36 bg-[#D9D9D9] rounded-full mb-6 flex-shrink-0 cursor-pointer overflow-hidden group border border-transparent hover:border-gray-700 transition-all flex items-center justify-center"
+                className="relative w-36 h-36 bg-[#D9D9D9] rounded-full mb-6 shrink-0 cursor-pointer overflow-hidden group border border-transparent hover:border-gray-700 transition-all flex items-center justify-center"
               >
                 {isUploadingImage ? (
                   <Loader2 className="h-8 w-8 text-gray-500 animate-spin" />
@@ -246,8 +246,8 @@ const Profile = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleLogout}
-                className="w-full py-3 px-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white
-                font-bold rounded-lg shadow-lg hover:from-green-600 hover:to-emerald-700
+                className="w-full py-3 px-4 bg-linear-to-r bg-sky-500 text-black
+                font-bold rounded-lg shadow-lg
                 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-900 uppercase tracking-wider text-sm"
               >
                 Logout

@@ -1,28 +1,33 @@
 import { Link } from "react-router";
 
+import planet from "../images/planet.svg";
+import calendar from "../images/calendar.svg";
+import star from "../images/star.svg";
+import image from "../images/image.svg";
+
 function ExploreNav() {
   const sections = [
     {
       id: 1,
-      icon: "📅",
+      icon: calendar,
       title: "Picture of the Day",
       path: "/apod",
     },
     {
       id: 2,
-      icon: "🖼️",
+      icon: image,
       title: "Images & Videos",
       path: "/imagevideo",
     },
     {
       id: 3,
-      icon: "🔵",
+      icon: planet,
       title: "Planets",
       path: "/planets",
     },
     {
       id: 4,
-      icon: "✨",
+      icon: star,
       title: "Stars",
       path: "/stars",
     },
@@ -38,7 +43,7 @@ function ExploreNav() {
               className="group block p-8 bg-gray-900/40 rounded-2xl border border-gray-800 hover:border-sky-500/50 transition-all duration-300"
             >
               <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                {item.icon}
+                <img src={item.icon} className="max-w-24 mx-auto" />
               </div>
               <h3 className="text-xl font-bold mb-3 group-hover:text-sky-400 text-white">
                 {item.title}

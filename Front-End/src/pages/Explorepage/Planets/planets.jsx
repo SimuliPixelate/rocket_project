@@ -100,13 +100,13 @@ function Planets() {
 
               <div className="space-y-2 text-sm text-zinc-300">
                 <div className="flex justify-between border-b border-zinc-800 pb-1">
-                  <span>Mass</span> <span>{planet.mass} Mⱼ</span>
+                  <span>Mass</span> <span>{planet.mass ?? "N/A"} Mⱼ</span>
                 </div>
                 <div className="flex justify-between border-b border-zinc-800 pb-1">
-                  <span>Radius</span> <span>{planet.radius} Rⱼ</span>
+                  <span>Radius</span> <span>{planet.radius ?? "N/A"} Rⱼ</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Temp</span> <span>{planet.temperature} K</span>
+                  <span>Temp</span> <span>{planet.temperature ?? "N/A"} K</span>
                 </div>
               </div>
             </div>

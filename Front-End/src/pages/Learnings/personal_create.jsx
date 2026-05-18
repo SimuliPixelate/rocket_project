@@ -80,7 +80,7 @@ function PersonalCreate() {
             >
               {loading ? "Saving..." : "Save"}
             </button>
-            <Link to="/personal" className="btn btn-ghost flex-1">
+            <Link to="/personal" className="btn flex-1">
               Cancel
             </Link>
           </div>

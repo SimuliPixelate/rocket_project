@@ -7,6 +7,12 @@ import saturn from "../../images/saturn.jpg";
 import launch from "../../images/launch.jpg";
 import astronaut from "../../images/astronaut.jpg";
 import earth from "../../images/earth.jpg";
+import planet from "../../images/planet.svg";
+import calendar from "../../images/calendar.svg";
+import star from "../../images/star.svg";
+import user from "../../images/user.svg";
+import image from "../../images/image.svg";
+import lightbulb from "../../images/lightbulb.svg";
 function Home() {
   const [apod, setApod] = useState(null);
 
@@ -30,42 +36,42 @@ function Home() {
   const sections = [
     {
       id: 1,
-      icon: "📅",
+      icon: calendar,
       title: "Picture of the Day",
       path: "/apod",
       desc: "Discover NASA's stunning captured images and information that changes everyday",
     },
     {
       id: 2,
-      icon: "🖼️",
+      icon: image,
       title: "Images & Videos",
       path: "/imagevideo",
       desc: "Search thousands of images and videos captured for learning about astronomy",
     },
     {
       id: 3,
-      icon: "🔵",
+      icon: planet,
       title: "Planets",
       path: "/planets",
       desc: "Find quick statistics about planets and exoplanets discovered within our universe",
     },
     {
       id: 4,
-      icon: "✨",
+      icon: star,
       title: "Stars",
       path: "/stars",
       desc: "Find quick statistics about stars and stellar bodies discovered within our universe",
     },
     {
       id: 5,
-      icon: "📖",
+      icon: lightbulb,
       title: "Learnings",
       path: "/personal",
       desc: "Document your experiences and learnings that you can go back and remember later on",
     },
     {
       id: 6,
-      icon: "😎",
+      icon: user,
       title: "Profile",
       path: "/profile",
       desc: "Access and update your account information, profile picture, and security",
@@ -147,7 +153,7 @@ function Home() {
           each day!
         </p>
 
-        <div className="carousel w-full max-w-4xl mx-auto h-[350px] md:h-[500px] rounded-2xl border border-gray-800 shadow-2xl">
+        <div className="carousel w-full max-w-4xl mx-auto h-87.5 md:h-125 rounded-2xl border border-gray-800 shadow-2xl">
           {[
             { id: "slide1", img: earth, prev: "#slide5", next: "#slide2" },
             { id: "slide2", img: stellar, prev: "#slide1", next: "#slide3" },
@@ -204,7 +210,7 @@ function Home() {
               className="group block p-8 bg-gray-900/40 rounded-2xl border border-gray-800 hover:border-sky-500/50 transition-all duration-300"
             >
               <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                {item.icon}
+                <img src={item.icon} className="max-w-24 mx-auto" />
               </div>
               <h3 className="text-xl  font-bold mb-3 group-hover:text-sky-400 text-white">
                 {item.title}

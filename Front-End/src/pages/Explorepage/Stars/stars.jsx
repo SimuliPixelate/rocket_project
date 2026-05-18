@@ -35,33 +35,6 @@ function Stars() {
     fetchStars(search);
   }, []);
 
-  const sections = [
-    {
-      id: 1,
-      icon: "📅",
-      title: "Picture of the Day",
-      path: "/apod",
-    },
-    {
-      id: 2,
-      icon: "🖼️",
-      title: "Images & Videos",
-      path: "/imagevideo",
-    },
-    {
-      id: 3,
-      icon: "🔵",
-      title: "Planets",
-      path: "/planets",
-    },
-    {
-      id: 4,
-      icon: "✨",
-      title: "Stars",
-      path: "/stars",
-    },
-  ];
-
   return (
     <div className="bg-black min-h-screen text-white" data-theme="">
       <div
